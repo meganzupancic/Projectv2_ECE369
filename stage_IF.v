@@ -39,7 +39,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF, 
-                        PCAdder_out_IF, Clk_in, Rst);
+                        PCAdder_out_IF, Clk_in, Rst);  
 
     input Rst, Clk_in;
     input PCSrc;
@@ -54,15 +54,16 @@ module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF,
     wire [31:0] mux5_result_IF;
     wire [31:0] PCResult_IF;
     
-    always @(posedge Clk_in) begin
+    //always @(posedge Clk_in) begin
         //$display("Mux 4 Result = %h", mux4_result_IF);
         //$display("Mux 5 Result = %h", mux5_result_IF);
         //$display("PCSrc = %b", PCSrc);
         //$display("PCAdder_out_IF = %h", PCAdder_out_IF);
-    end
+    //end
     
     //wire ClkOut;
     //wire [31:0] PCResult; //do we need to declare this again?
+    
 
     //Mux32Bit2To1(inA, inB, sel, out);
     Mux32Bit2To1 a1(PCAdder_out_IF, AddALU_out_MEM, PCSrc, mux4_result_IF);
@@ -77,7 +78,7 @@ module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF,
     PCAdder a4(PCResult_IF, PCAdder_out_IF);
     
     //InstructionMemory(Address, Instruction, Clk_in);
-    InstructionMemory a5(PCResult_IF, Instruction_IF, Clk_in);
+    InstructionMemory a5(PCResult_IF, Instruction_IF);
     
     
     
