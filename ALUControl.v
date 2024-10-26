@@ -30,7 +30,7 @@ module ALUControl(ALUOp, funct, ALUControl);
 	       6'b000000: // sll
               ALUControl = 6'b000000;
 	       6'b000010: // srl
-              ALUControl = 6'b000010;
+              ALUControl = 6'b111111; // manually changed to all 1s to differentiate from JR
             6'b101010: // slt
 	      ALUControl = 6'b101010;
 	       6'b001000: // jr
