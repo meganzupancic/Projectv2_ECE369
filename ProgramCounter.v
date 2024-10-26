@@ -42,7 +42,10 @@ module ProgramCounter(Address, PCResult, Rst, Clk);
         end else begin
             PCResult <= Address; // Update PC with the Address
         end
+        $display ("PC = %d", PCResult);
     end
+    
+    
 
 endmodule
 
