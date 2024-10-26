@@ -5,12 +5,12 @@ module Branch(Branch, Zero, PCSrc);
 
   output reg PCSrc;
   
-  initial begin
+  /*initial begin
     assign PCSrc = 0;
   end
-  
+  */
   always @(Zero) begin
-    assign PCSrc = Branch & Zero;
+    PCSrc <= Branch & Zero;
   end
 
 endmodule
