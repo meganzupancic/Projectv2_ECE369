@@ -44,7 +44,7 @@ module Top_Level(Rst, Clk);
     wire [4:0] rd_out_IDEX;
     wire [5:0] ALUOp_out_IDEX;
     wire [31:0] ALUAddResult_EX;
-    wire [31:0] ALuResult_EX;
+    wire [31:0] ALUResult_EX;
     wire [31:0] ReadData2_out_EX;
     wire [4:0] mux2_result_EX;
     wire [31:0] ALUAddResult_out_EXMEM;
@@ -58,6 +58,8 @@ module Top_Level(Rst, Clk);
     wire [31:0] ALUResult_out_MEMWB;
     wire [4:0] ReadData_out_MEMWB;
     wire [4:0] mux2_result_out_MEMWB;
+    wire [31:0] mux3_result_WB;
+    
     
     
     
@@ -68,14 +70,14 @@ module Top_Level(Rst, Clk);
     
     
     //IF_ID(PCAdder_in_IFID, Instruction_in_IFID, PCAdder_out_IFID, Instruction_out_IFID, Clk_in);
-    IF_ID top2(PCAdder_out_IF, Instruction_IF, PCAdder_out_IFID, Instruction_out_IFID, Clk);
+    IF_ID top2(PCAdder_out_IF, Instruction_IF, PCAdder_out_IFID, Instruction_out_IFID, Clk, Rst);
     
     
     //stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_in, WriteData_in,
     //                RegWrite_out_ID, MemtoReg_ID, Branch_ID, MemRead_ID, MemWrite_ID, RegDst_ID, ALUOp_ID, 
     //                ALUSrc_ID, PCSrc_ID, PCAddResult_out_ID, ReadData1_out_ID, ReadData2_out_ID, SignExtResult_ID, 
     //                rt_ID, rd_ID, JR_ID, Clk_in);
-    stage_ID top3(PCAdder_out_IFID, Instruction_out_IFID, RegWrite_WB, mux2_result_out_MEMWB, mux3_result_WB,
+    stage_ID top3(PCAdder_out_IFID, Instruction_out_IFID, RegWrite_out_MEMWB, mux2_result_out_MEMWB, mux3_result_WB,
                     RegWrite_out_ID, MemtoReg_ID, Branch_ID, MemRead_ID, MemWrite_ID, RegDst_ID, ALUOp_ID, 
                     ALUSrc_ID, PCAddResult_out_ID, ReadData1_out_ID, ReadData2_out_ID, SignExtResult_ID, 
                     rt_ID, rd_ID, JR_ID, Clk);
@@ -89,13 +91,13 @@ module Top_Level(Rst, Clk);
     //            RegDst_out_IDEX, ALUOp_out_IDEX, ALUSrc_out_IDEX,
     //            Clk_in); 
     ID_EX top4(PCAddResult_out_ID, ReadData1_out_ID, ReadData2_out_ID, SignExtResult_ID, rt_ID,
-                rd_ID, RegWrite_out_MEMWB, MemtoReg_ID, Branch_ID, MemRead_ID,
+                rd_ID, RegWrite_out_ID, MemtoReg_ID, Branch_ID, MemRead_ID,
                 MemWrite_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID,
                 PCAddResult_out_IDEX, ReadData1_out_IDEX, ReadData2_out_IDEX, signExtend_out_IDEX, 
                 rt_out_IDEX, rd_out_IDEX, RegWrite_out_IDEX, MemtoReg_out_IDEX, Branch_out_IDEX, 
                 MemRead_out_IDEX, MemWrite_out_IDEX, 
                 RegDst_out_IDEX, ALUOp_out_IDEX, ALUSrc_out_IDEX,
-                Clk);
+                Clk, Rst);
                 
                 
      //stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, MemWrite_in_EX, RegDst_EX, 
@@ -123,7 +125,7 @@ module Top_Level(Rst, Clk);
                 MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, 
                 RegWrite_out_EXMEM, ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, 
                 ReadData2_out_EXMEM, mux2_Result_out_EXMEM,
-                Clk);
+                Clk, Rst);
                 
                 
       
@@ -148,7 +150,7 @@ module Top_Level(Rst, Clk);
                     ReadData_MEM, mux2_result_out_MEM, 
                     MemtoReg_out_MEMWB, RegWrite_out_MEMWB, ALUResult_out_MEMWB, 
                     ReadData_out_MEMWB, mux2_result_out_MEMWB,
-                    Clk);
+                    Clk, Rst);
                     
                     
        //stage_WB (ReadData_WB, ALUResult_WB, MemtoReg_WB, mux3_result_WB);
