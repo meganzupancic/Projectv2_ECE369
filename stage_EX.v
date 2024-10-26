@@ -54,7 +54,7 @@ module stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, Me
   Mux32Bit2To1 c3(ReadData2_in_EX, SignExtResult_EX, ALUSrc_EX, mux1_result_EX);
 
   //ALUControl(ALUOp, funct, ALUControl);
-  ALUControl c4(ALUOp_EX, SignExtResult_EX, ALUControl_EX);    // if there is an error, we want 6 bits from SignExtResult
+  ALUControl c4(ALUOp_EX, SignExtResult_EX[5:0], ALUControl_EX);    // if there is an error, we want 6 bits from SignExtResult
 
   //ALU32Bit(ALUControl, A, B, ALUResult, Zero);
   ALU32Bit c5(ALUControl_EX, ReadData1_EX, mux1_result_EX, ALUResult_EX, Zero_EX);
