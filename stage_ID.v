@@ -35,7 +35,8 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
   assign rt_ID = Instruction_ID[20:16];
   assign rd_ID = Instruction_ID[15:11];
   
- 
+ //RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, 
+ //                   ReadRegister1, ReadRegister2, Clk_in, ReadData1, ReadData2);
   RegisterFile b1(Instruction_ID, mux6_result_ID, mux7_result_ID, RegWrite_in, Clk_in, ReadData1_out_ID, ReadData2_out_ID);
 
   //SignExtension(Instruction, out);
