@@ -2,7 +2,7 @@ module stage_MEM (MemWrite_MEM, MemRead_MEM, Branch_MEM, MemtoReg_in_MEM, RegWri
                     ALUAddResult_in_MEM, Zero_MEM, ALUResult_in_MEM, ReadData2_MEM, 
                     mux2_result_in_MEM, MemtoReg_out_MEM, PCSrc_MEM, ALUResult_out_MEM, 
                     mux2_result_out_MEM, ReadData_MEM, RegWrite_out_MEM, ReadData2_out_MEM,
-                    Clk_in);
+                    Clk_in, Rst);
 
   input MemWrite_MEM;
   input MemRead_MEM;
@@ -15,6 +15,7 @@ module stage_MEM (MemWrite_MEM, MemRead_MEM, Branch_MEM, MemtoReg_in_MEM, RegWri
   input [31:0] ReadData2_MEM;
   input [4:0] mux2_result_in_MEM;
   input Clk_in;
+  input Rst;
 
   output MemtoReg_out_MEM;
   //output [31:0] ALUAddResult_out_MEM;
@@ -31,6 +32,8 @@ module stage_MEM (MemWrite_MEM, MemRead_MEM, Branch_MEM, MemtoReg_in_MEM, RegWri
   assign mux2_result_out_MEM = mux2_result_in_MEM;
   assign ReadData2_out_MEM = ReadData2_MEM;
   //assign ALUAddResult_out_MEM = ALUAddResult_in_MEM;
+  
+  
   
   //Branch(Branch, Zero, PCSrc);
   Branch d1(Branch_MEM, Zero_MEM, PCSrc_MEM);
