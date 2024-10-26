@@ -63,6 +63,8 @@ module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, Rea
     
 	reg [31:0] RegisterFile[31:0];
 	
+	wire [4:0] ReadRegister1, ReadRegister2;
+	
 	assign ReadRegister1 = Instruction[25:21];
 	assign ReadRegister2 = Instruction[20:16];
 	
@@ -75,10 +77,10 @@ module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, Rea
     //$display("Read from Register %0d: %h", Instruction[25:21], ReadData1);
 	always @(negedge Clk_in) begin // negedge Clk
 		//ReadData1 <= RegisterFile[ReadRegister1];
-		ReadData1 <= RegisterFile[ReadRegister1];  // rs
+		ReadData1 <= RegisterFile[Instruction[25:21]];  // rs
 		$display("Read1 from Register %0d: %h", Instruction[25:21], ReadData1);
 		//ReadData2 <= RegisterFile[ReadRegister2];
-		ReadData2 <= RegisterFile[ReadRegister2];  //rt
+		ReadData2 <= RegisterFile[Instruction[20:16]];  //rt
 		$display("Read2 from Register %0d: %h", Instruction[20:16], ReadData2);
 	end
 	
@@ -86,6 +88,11 @@ module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, Rea
 		if (RegWrite == 1) begin 
 	       		//RegisterFile[WriteRegister] <= WriteData;
 			RegisterFile[WriteRegister] <= WriteData;
+			$display ("WriteRegister = %d", WriteRegister);
+			$display ("WriteData = %d", WriteData);
+			$display ("RegisterFile[WriteRegister] = %d", RegisterFile[WriteRegister]); 
+	   	end else begin
+	   	   $display ("RegWrite != 1");
 	   	end
 	end
 
