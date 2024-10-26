@@ -27,12 +27,12 @@ module Top_Level_tb();
     end
 
     // Reset sequence
-    //initial begin
+    initial begin
         
-    //    Rst_tb = 1;
-    //    #20;
-    //    Rst_tb = 0;
-    //end
+        Rst_tb = 1;
+        #20;
+        Rst_tb = 0;
+    end
     
     
 
@@ -55,7 +55,7 @@ module Top_Level_tb();
     // Simulation stop condition (adjust based on program length)
     initial begin
         #60;
-        //$finish;
+        $finish;
     end
 
 endmodule
