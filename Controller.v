@@ -332,8 +332,32 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     JAL <= 1;  
                     //PCSrc <= Branch & Zero;
                 end
+                default: begin
+                    RegDst <= 0;
+                    ALUOp <= 6'b000000;
+                    ALUSrc <= 0;
+                    Branch <= 0;
+                    MemRead <= 0;
+                    MemWrite <= 0;
+                    MemtoReg <= 0;
+                    RegWrite <= 0;  
+                    JR <= 0;  
+                    JAL <= 0;
+                end
                 
             endcase
+            if (Instruction == 32'b0) begin
+                RegDst <= 0;
+                    ALUOp <= 6'b000000;
+                    ALUSrc <= 0;
+                    Branch <= 0;
+                    MemRead <= 0;
+                    MemWrite <= 0;
+                    MemtoReg <= 0;
+                    RegWrite <= 0;  
+                    JR <= 0;  
+                    JAL <= 0;
+            end
         end
    // end
 
