@@ -114,19 +114,19 @@ module Top_Level(Rst, Clk);
                     
                     
      //EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_EXMEM, 
-     //           RegWrite_in_EXMEM, ALUAddResult_in_EXMEM, Zero_in_EXMEM, ALUResult_in_EXMEM, 
-     //           ReadData2_in_EXMEM, mux2_Result_in_EXMEM,
-     //           MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, 
-     //           RegWrite_out_EXMEM, ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, 
-     //           ReadData2_out_EXMEM, mux2_Result_out_EXMEM,
-     //           Clk_in);
+                //RegWrite_in_EXMEM, ALUAddResult_in_EXMEM, Zero_in_EXMEM, ALUResult_in_EXMEM, 
+                //ReadData2_in_EXMEM, mux2_Result_in_EXMEM,
+                //MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, 
+                //RegWrite_out_EXMEM, ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, 
+                //ReadData2_out_EXMEM, mux2_Result_out_EXMEM,
+                //size_in_EXMEM, size_out_EXMEM, Clk_in, Rst);
      EX_MEM top6(MemWrite_out_EX, MemRead_out_EX, Branch_out_EX, MemtoReg_out_EX, 
                 RegWrite_out_EX, ALUAddResult_EX, Zero_EX, ALUResult_EX, 
                 ReadData2_out_EX, mux2_result_EX, 
                 MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, 
                 RegWrite_out_EXMEM, ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, 
                 ReadData2_out_EXMEM, mux2_Result_out_EXMEM,
-                Clk, Rst);
+                size_out_EX, size_out_EXMEM, Clk, Rst);
                 
                 
       
