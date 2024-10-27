@@ -102,15 +102,15 @@ module Top_Level(Rst, Clk);
                 
                 
      //stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, MemWrite_in_EX, RegDst_EX, 
-     //            ALUOp_EX, ALUSrc_EX, PCAddResult_EX, ReadData1_EX, ReadData2_in_EX, SignExtResult_EX, 
-     //            rt_EX, rd_EX, RegWrite_out_EX, MemtoReg_out_EX, 
-     //            Branch_out_EX, MemRead_out_EX, MemWrite_out_EX, ALUAddResult_EX, Zero_EX, ALUResult_EX, 
-     //            ReadData2_out_EX, mux2_result_EX, Clk_in);
+                 //ALUOp_EX, ALUSrc_EX, PCAddResult_EX, ReadData1_EX, ReadData2_in_EX, SignExtResult_EX, 
+                 //rt_EX, rd_EX, RegWrite_out_EX, MemtoReg_out_EX, 
+                 //Branch_out_EX, MemRead_out_EX, MemWrite_out_EX, ALUAddResult_EX, Zero_EX, ALUResult_EX, 
+                 //ReadData2_out_EX, mux2_result_EX, size_in_EX, size_out_EX, Clk_in);
      stage_EX top5(RegWrite_out_IDEX, MemtoReg_out_IDEX, Branch_out_IDEX, MemRead_out_IDEX, MemWrite_out_IDEX, RegDst_out_IDEX,
                     ALUOp_out_IDEX, ALUSrc_out_IDEX, PCAddResult_out_IDEX, ReadData1_out_IDEX, ReadData2_out_IDEX, signExtend_out_IDEX,
                     rt_out_IDEX, rd_out_IDEX, RegWrite_out_EX, MemtoReg_out_EX, 
                     Branch_out_EX, MemRead_out_EX, MemWrite_out_EX, ALUAddResult_EX, Zero_EX, ALUResult_EX, 
-                    ReadData2_out_EX, mux2_result_EX, Clk);
+                    ReadData2_out_EX, mux2_result_EX, size_out_IDEX, size_out_EX, Clk);
                     
                     
      //EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_EXMEM, 
