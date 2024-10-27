@@ -1,1 +1,26 @@
+Instruction Testing:
+
+addi:
+  addi $t1, $zero, 6  ->  $t1 = $zero + 6
+                          rs = $zero = reg #0,  ReadData1 = 0   final value in reg = 0
+                          rt = $t1 = reg #9,    ReadData2 = 0   final value in reg = 6   (destination for I-type)
+                          imm = 6
+                          PC = 0   (address of instruction)
+
+  add $t2, $t1, $t1   ->  $t2 = $t1 + $t1
+                          rs = $t1 = reg #9,    ReadData1 = 6               final value in reg = 6
+                          rt = $t1 = reg #9,    ReadData2 = 6               final value in reg  = 6
+                          rd = $t2 = reg #10,   initial value in reg = 0    final value in reg = 12  (destination for R-type)
+                          PC = 24  (address of instruction)
+  
+
+
+
+
+
+
+
+
+
+
 
