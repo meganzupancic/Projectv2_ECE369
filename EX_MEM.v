@@ -6,7 +6,7 @@ module EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_
                 MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, 
                 RegWrite_out_EXMEM, ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, 
                 ReadData2_out_EXMEM, mux2_Result_out_EXMEM,
-                Clk_in, Rst);
+                size_in_EXMEM, size_out_EXMEM, Clk_in, Rst);
   
   input MemWrite_in_EXMEM;
   input MemRead_in_EXMEM;
@@ -18,6 +18,7 @@ module EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_
   input [31:0] ALUResult_in_EXMEM;
   input [31:0] ReadData2_in_EXMEM;
   input [4:0] mux2_Result_in_EXMEM;
+  input [1:0] size_in_EXMEM;
   input Clk_in;
   input Rst;
 
@@ -31,6 +32,7 @@ module EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_
   output reg [31:0] ALUResult_out_EXMEM;
   output reg [31:0] ReadData2_out_EXMEM;
   output reg [4:0] mux2_Result_out_EXMEM;
+  output reg [1:0] size_out_EXMEM;
   
   always @(posedge Rst) begin
       MemWrite_out_EXMEM <= 0;
@@ -43,6 +45,7 @@ module EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_
       ALUResult_out_EXMEM <= 0;
       ReadData2_out_EXMEM <= 0;
       mux2_Result_out_EXMEM <= 0;
+      size_out_EXMEM <= 0;
   end
 
   always @(posedge Clk_in) begin
@@ -56,6 +59,7 @@ module EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_
       ALUResult_out_EXMEM <= ALUResult_in_EXMEM;
       ReadData2_out_EXMEM <= ReadData2_in_EXMEM;
       mux2_Result_out_EXMEM <= mux2_Result_in_EXMEM;
+      size_out_EXMEM <= size_in_EXMEM;
   end
 
 
