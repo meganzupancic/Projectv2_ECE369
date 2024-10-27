@@ -1,7 +1,7 @@
 module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_in, WriteData_in,
                     RegWrite_out_ID, MemtoReg_ID, Branch_ID, MemRead_ID, MemWrite_ID, RegDst_ID, ALUOp_ID, 
                     ALUSrc_ID, PCAddResult_out_ID, ReadData1_out_ID, ReadData2_out_ID, SignExtResult_ID, 
-                    rt_ID, rd_ID, JR_ID, Clk_in);
+                    rt_ID, rd_ID, JR_ID, size_ID, Clk_in);
 
   input [31:0] PCAddResult_in_ID;
   input [31:0] Instruction_ID;
@@ -30,6 +30,7 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
   output [4:0] rt_ID;
   output [4:0] rd_ID;
   output JR_ID;
+  output [1:0] size_ID;
 
   assign PCAddResult_out_ID = PCAddResult_in_ID;
   assign rt_ID = Instruction_ID[20:16];
