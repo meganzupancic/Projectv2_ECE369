@@ -131,15 +131,15 @@ module Top_Level(Rst, Clk);
                 
       
       //stage_MEM (MemWrite_MEM, MemRead_MEM, Branch_MEM, MemtoReg_in_MEM, RegWrite_in_MEM, 
-      //              ALUAddResult_in_MEM, Zero_MEM, ALUResult_in_MEM, ReadData2_MEM, 
-      //              mux2_result_in_MEM, MemtoReg_out_MEM, PCSrc_MEM, ALUResult_out_MEM, 
-      //              mux2_result_out_MEM, ReadData_MEM, RegWrite_out_MEM, ReadData2_out_MEM,
-      //              Clk_in);
+                    //ALUAddResult_in_MEM, Zero_MEM, ALUResult_in_MEM, ReadData2_MEM, 
+                    //mux2_result_in_MEM, MemtoReg_out_MEM, PCSrc_MEM, ALUResult_out_MEM, 
+                    //mux2_result_out_MEM, ReadData_MEM, RegWrite_out_MEM, ReadData2_out_MEM,
+                    //size_MEM, Clk_in, Rst);
       stage_MEM top7(MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, RegWrite_out_EXMEM,
                         ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, ReadData2_out_EXMEM,
                         mux2_Result_out_EXMEM, MemtoReg_out_MEM, PCSrc_MEM, ALUResult_out_MEM, 
                         mux2_result_out_MEM, ReadData_MEM, RegWrite_out_MEM, ReadData2_out_MEM,
-                        Clk);
+                        size_out_EXMEM, Clk, Rst);
                         
                         
       //MEM_WB(MemtoReg_in_MEMWB, RegWrite_in_MEMWB, ALUResult_in_MEMWB, 
