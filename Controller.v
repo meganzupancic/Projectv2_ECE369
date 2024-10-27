@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL);
+module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL, size);
     //input wire Clk;
     //input wire Rst;
     
@@ -38,6 +38,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
     output reg RegWrite;
     output reg JR;
     output reg JAL;
+    output reg [1:0] size;
 
     wire [5:0] operation;
     assign operation = Instruction[31:26];
@@ -66,6 +67,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
             RegWrite <= 0;  
             JR <= 0;  
             JAL <= 0;
+            size <= 0;
     
 
         $display("operation: %b", operation);
@@ -156,6 +158,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 1;
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 2'b00;
                     //PCSrc <= 0;       //doesn't matter
                     //Select_size <= 0, 1, 2
                             // 0 - Word [32 bits]
@@ -174,6 +177,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 0;
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 2'b00;
                     //PCSrc <= 0;       //doesn't matter
                 end
                 6'b101000: begin // Store Byte
@@ -188,6 +192,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 0;
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 2'b01;
                     //PCSrc <= 0;       //doesn't matter
                 end
                 6'b100000: begin // Load Byte
@@ -202,6 +207,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 1;
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 2'b01;
                     //PCSrc <= 0;       //doesn't matter
                 end
                 6'b101001: begin // Store half
@@ -216,6 +222,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 0;
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 2'b10;
                     //PCSrc <= 0;       //doesn't matter
                 end
                 6'b100001: begin // Load half
@@ -230,6 +237,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 1;
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 2'b10;
                     //PCSrc <= 0;       //doesn't matter
                 end
                 6'b000001: begin // BGEZ & BLTZ
@@ -357,6 +365,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 0;  
                     JR <= 0;  
                     JAL <= 0;
+                    size <= 0;
             end
         end
    // end
