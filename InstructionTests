@@ -12,6 +12,13 @@ addi:
                           rt = $t1 = reg #9,    ReadData2 = 6               final value in reg  = 6
                           rd = $t2 = reg #10,   initial value in reg = 0    final value in reg = 12  (destination for R-type)
                           PC = 24  (address of instruction)
+
+  sw $t2, 4($t1)    ->   value in $t2 gets stored into memory[$t1 value + imm]       sw: memory[rs value + imm] = rt value
+                         rs = $t1 = reg #9,    ReadData1 = 6
+                         rt = $t2 = reg #10,   ReadData2 = 12
+                         imm = 4
+                         memory[6 + 4] = memory[10] 
+                         want memory[10] = 12
   
 
 
