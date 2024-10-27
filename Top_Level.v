@@ -34,6 +34,7 @@ module Top_Level(Rst, Clk);
     wire [31:0] ReadData1_out_ID;
     wire [31:0] ReadData2_out_ID;
     wire [31:0] SignExtResult_ID;
+    wire [31:0] PCAddResult_out_ID;
     wire [4:0] rt_ID;
     wire [4:0] rd_ID;
     wire [31:0] PCAddResult_out_IDEX;
