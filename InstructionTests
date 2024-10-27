@@ -19,6 +19,7 @@ addi:
                          imm = 4
                          memory[6 + 4] = memory[10] 
                          want memory[10] = 12
+                         PC = 48  (address of instruction)
   
 
 
