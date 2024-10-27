@@ -23,7 +23,7 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
   output RegDst_ID;
   output [5:0] ALUOp_ID;
   output ALUSrc_ID;
-  output PCAddResult_out_ID;
+  output [31:0] PCAddResult_out_ID;
   output [31:0] ReadData1_out_ID;
   output [31:0] ReadData2_out_ID;
   output [31:0] SignExtResult_ID;
