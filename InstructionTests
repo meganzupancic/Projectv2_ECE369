@@ -1,25 +1,35 @@
 Instruction Testing:
 
 addi:
-  addi $t1, $zero, 6  ->  $t1 = $zero + 6
+  1. addi $t1, $zero, 6  ->  $t1 = $zero + 6
                           rs = $zero = reg #0,  ReadData1 = 0   final value in reg = 0
                           rt = $t1 = reg #9,    ReadData2 = 0   final value in reg = 6   (destination for I-type)
                           imm = 6
                           PC = 0   (address of instruction)
 
-  add $t2, $t1, $t1   ->  $t2 = $t1 + $t1
+  2. add $t2, $t1, $t1   ->  $t2 = $t1 + $t1
                           rs = $t1 = reg #9,    ReadData1 = 6               final value in reg = 6
                           rt = $t1 = reg #9,    ReadData2 = 6               final value in reg  = 6
                           rd = $t2 = reg #10,   initial value in reg = 0    final value in reg = 12  (destination for R-type)
                           PC = 24  (address of instruction)
 
-  sw $t2, 4($t1)    ->   value in $t2 gets stored into memory[$t1 value + imm]       sw: memory[rs value + imm] = rt value
+  3. sw $t2, 4($t1)    ->   value in $t2 gets stored into memory[$t1 value + imm]       sw: memory[rs value + imm] = rt value
                          rs = $t1 = reg #9,    ReadData1 = 6
                          rt = $t2 = reg #10,   ReadData2 = 12
                          imm = 4
                          memory[6 + 4] = memory[10] 
                          want memory[10] = 12
                          PC = 48  (address of instruction)
+
+4. lw $t3, 4($t1)      ->  value in memory[$t1 value + imm] stored into reg $t3        lw: rt = memory[rs value + imm]
+                        rs = $t1 = reg #9,    ReadData1 = 6
+                        rt = $t3 = reg #11,   ReadData2 = X
+                        imm = 4
+                        memory[6 + 4] = memory[10]
+                        want $t3 (reg #11) = 12
+                        PC = 72
+
+5. sub $t4, $t3, $t1   ->  
   
 
 
