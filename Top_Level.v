@@ -84,13 +84,12 @@ module Top_Level(Rst, Clk);
                     rt_ID, rd_ID, JR_ID, Clk);
                     
     //ID_EX(PCAddResult_in_IDEX, ReadData1_in_IDEX, ReadData2_in_IDEX, signExtend_in_IDEX, rt_in_IDEX, 
-    //            rd_in_IDEX, RegWrite_in_IDEX, MemtoReg_in_IDEX, Branch_in_IDEX, MemRead_in_IDEX, 
-    //            MemWrite_in_IDEX, RegDst_in_IDEX, ALUOp_in_IDEX, ALUSrc_in_IDEX, 
-    //            PCAddResult_out_IDEX, ReadData1_out_IDEX, ReadData2_out_IDEX, signExtend_out_IDEX, 
-    //            rt_out_IDEX, rd_out_IDEX, RegWrite_out_IDEX, MemtoReg_out_IDEX, Branch_out_IDEX, 
-    //            MemRead_out_IDEX, MemWrite_out_IDEX, 
-    //            RegDst_out_IDEX, ALUOp_out_IDEX, ALUSrc_out_IDEX,
-    //            Clk_in); 
+                //rd_in_IDEX, RegWrite_in_IDEX, MemtoReg_in_IDEX, Branch_in_IDEX, MemRead_in_IDEX, 
+                //MemWrite_in_IDEX, RegDst_in_IDEX, ALUOp_in_IDEX, ALUSrc_in_IDEX, 
+                //PCAddResult_out_IDEX, ReadData1_out_IDEX, ReadData2_out_IDEX, signExtend_out_IDEX, 
+                //rt_out_IDEX, rd_out_IDEX, RegWrite_out_IDEX, MemtoReg_out_IDEX, Branch_out_IDEX, 
+                //MemRead_out_IDEX, MemWrite_out_IDEX, RegDst_out_IDEX, ALUOp_out_IDEX, ALUSrc_out_IDEX,
+                //size_in_IDEX, size_out_IDEX, Clk_in, Rst); 
     ID_EX top4(PCAddResult_out_ID, ReadData1_out_ID, ReadData2_out_ID, SignExtResult_ID, rt_ID,
                 rd_ID, RegWrite_out_ID, MemtoReg_ID, Branch_ID, MemRead_ID,
                 MemWrite_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID,
@@ -98,7 +97,7 @@ module Top_Level(Rst, Clk);
                 rt_out_IDEX, rd_out_IDEX, RegWrite_out_IDEX, MemtoReg_out_IDEX, Branch_out_IDEX, 
                 MemRead_out_IDEX, MemWrite_out_IDEX, 
                 RegDst_out_IDEX, ALUOp_out_IDEX, ALUSrc_out_IDEX,
-                Clk, Rst);
+                size_out_ID, size_out_IDEX, Clk, Rst);
                 
                 
      //stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, MemWrite_in_EX, RegDst_EX, 
