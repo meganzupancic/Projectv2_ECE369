@@ -12,7 +12,7 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
   
   wire [4:0] mux6_result_ID;
   wire [31:0] mux7_result_ID;  
-  wire JAL;
+  wire JAL_ID;
 
 
   output RegWrite_out_ID;
