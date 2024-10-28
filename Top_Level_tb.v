@@ -10,6 +10,8 @@ module Top_Level_tb();
     wire [31:0] PC_current;
     wire [31:0] DestRegValue;
     
+    wire [31:0] PC_pin_out_tb;
+    
     // Instantiate the Top_Level module
     Top_Level DUT (
         .Rst(Rst_tb),
@@ -18,8 +20,8 @@ module Top_Level_tb();
     );
 
     // Connect the internal signals to the DUT's output signals
-    assign PC_current = DUT.PCAdder_out_IF;       // Connect to the PC output
-    assign DestRegValue = DUT.mux3_result_WB;     // Connect to the WriteBack register value
+    //assign PC_current = DUT.PCAdder_out_IF;       // Connect to the PC output
+    //assign DestRegValue = DUT.mux3_result_WB;     // Connect to the WriteBack register value
 
     // Clock generation
     initial begin
@@ -55,7 +57,7 @@ module Top_Level_tb();
 
     // Simulation stop condition (adjust based on program length)
     initial begin
-        #60;
+        #300;
         $finish;
     end
 
