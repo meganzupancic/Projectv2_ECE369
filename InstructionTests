@@ -27,9 +27,17 @@ addi:
                         imm = 4
                         memory[6 + 4] = memory[10]
                         want $t3 (reg #11) = 12
-                        PC = 72
+                        PC = 72  (address of instruction)
 
-5. sub $t4, $t3, $t1   ->  
+5. sub $t4, $t3, $t1   -> $t4 = 12 - 6 
+                          rs = $t3 = reg #11,  ReadData1 = 12
+                          rt = $t1 = reg #9,   ReadData2 = 6
+                          rd = $t4 = reg #12
+                          want $t4 (reg #12) = 6
+                          PC = 96  (address of instruction)
+
+6. mul $t0, $t1, $t4   -> 
+
   
 
 
