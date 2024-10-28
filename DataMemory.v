@@ -60,9 +60,9 @@ module DataMemory(Address, WriteData, Clk_in, MemWrite, MemRead, size, ReadData)
         if (MemWrite == 1) begin
             case (size)
                 2'b00:
-                    memory[Address] <= WriteData;  // store word
+                    memory[Address[11:2]] <= WriteData;  // store word
                 2'b01:
-                    memory[Address][7:0] <= WriteData[7:0];  // store byte
+                    memory[Address[11:2]][7:0] <= WriteData[7:0];  // store byte
                 2'b10:
                     memory[Address][15:0] <= WriteData[15:0];  // store halfword
             endcase
