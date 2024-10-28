@@ -39,7 +39,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF, 
-                        PCAdder_out_IF, Clk_in, Rst);  
+                        PCAdder_out_IF, Clk_in, Rst, PC_pin);  
 
     input Rst, Clk_in;
     input PCSrc;
@@ -49,6 +49,7 @@ module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF,
     
     output [31:0] Instruction_IF;
     output [31:0] PCAdder_out_IF;
+    output [31:0] PC_pin;
 
     wire [31:0] mux4_result_IF;
     wire [31:0] mux5_result_IF;
@@ -80,6 +81,6 @@ module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF,
     //InstructionMemory(Address, Instruction, Clk_in);
     InstructionMemory a5(PCResult_IF, Instruction_IF);
     
-    
+    assign PC_pin = mux5_result_IF;
     
 endmodule
