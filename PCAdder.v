@@ -26,7 +26,7 @@ module PCAdder(PCResult, PCAddResult);
     output reg [31:0] PCAddResult;
 
     /* Please fill in the implementation here... */
-    always @* begin
+    always @(*) begin
         PCAddResult <= PCResult + 4;
     end
 
