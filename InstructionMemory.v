@@ -53,7 +53,7 @@ module InstructionMemory(Address, Instruction);
         $display("Address = %h", Address);
     
         //$readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/addi_$t1_$zero_6.mem", memory);
-        $readmemh("C:/Users/athiel/Downloads/addi_t1_zero_6.mem", memory);
+        $readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/test2.mem", memory);
         
         
         $display("Memory Contents:");
@@ -75,9 +75,8 @@ module InstructionMemory(Address, Instruction);
     end
     
     //always @(posedge Clk_in) begin // mixed level sensitive and edge triggered event controls are not supported for synthesis: posedge Clk_in, Address
-            //Instruction <= memory[Address[8:2]];   
+            //Instruction <= memory[Address[10:2]];   
     //end
     assign Instruction = memory[Address[10:2]];
 
 endmodule
-
