@@ -50,16 +50,42 @@ addi:
                           WANT $t3 (reg #11) = 4
                           PC = 144  (address of instruction)
 
-8. 
+8. andi $t4, $t2, 13   -> $t4 = 12 & 13  =  01100 & 01101  =  01100  =  12
+                          rs = $t2 (reg #10),    ReadData1 = 12
+                          rt = $t4 (reg #12),    ReadData2 = 6
+                          imm = 13
+                          WANT $t4 (reg #12) = 12
+                          PC = 168  (address of instruction)
 
+9. or $t5, $t0, $t1  ->  $t5 = 36 or 6  =  100100 or 000110  =  100110  =  38
+                          rs = $t0 (reg #8),     ReadData1 = 36
+                          rt = $t1 (reg #9),     ReadData2 = 6
+                          rd = $t5 (reg #13),    current value = x
+                          WANT $t5 (reg #13) = 38
+                          PC = 192
 
+10. ori $t6, $t5, 15  -> $t6 = 38 or 15  =  100110 or 001111  =  101111  =  47
+                          rs = $t5 (reg #13),     ReadData1 = 38
+                          rt = $t6 (reg #14),     ReadData2 = x
+                          imm = 15
+                          WANT $t6 (reg #14) = 47
+                          PC = 216
 
-  
+11. nor $t7, $t5, $t2  -> $t7 = 38 nor 12  =  100110 nor 001100  =  010001  17
+                          rs = $t5 (reg #13),    ReadData1 = 38
+                          rt = $t2 (reg #10),    ReadData2 = 12
+                          rd = $t7 (reg #15),    current value = x
+                          WANT $t7 (reg #15) = 17
+                          PC = 240
 
+12. xor $t0, $t0, $t1  -> $t0 = 36 xor 6  =  100100 xor 000110  =  100010  = 34
+                          rs = $t0 (reg #8),    ReadData1 = 36
+                          rt = $t1 (reg #9),    ReadData2 = 6
+                          rd = $t0 (reg #8),    current value = 36
+                          WANT $t0 (reg #8) = 34
+                          PC = 264
 
-
-
-
+13. xori $t1, $t2, 7  ->  $t1 = 12 xor 
 
 
 
