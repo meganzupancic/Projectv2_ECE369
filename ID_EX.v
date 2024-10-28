@@ -41,27 +41,46 @@ module ID_EX(PCAddResult_in_IDEX, ReadData1_in_IDEX, ReadData2_in_IDEX, signExte
   output reg RegDst_out_IDEX;
   output reg [5:0] ALUOp_out_IDEX;
   output reg ALUSrc_out_IDEX;
-  output reg [1:0]size_out_IDEX;
+  output reg [1:0] size_out_IDEX;
   
-  always @(posedge Rst) begin
-    PCAddResult_out_IDEX <= 0;
-    ReadData1_out_IDEX <= 0;
-    ReadData2_out_IDEX <= 0;
-    signExtend_out_IDEX <= 0;
-    rt_out_IDEX <= 0;
-    rd_out_IDEX <= 0;
-    RegWrite_out_IDEX <= 0;
-    MemtoReg_out_IDEX <= 0;
-    Branch_out_IDEX <= 0;
-    MemRead_out_IDEX <= 0;
-    MemWrite_out_IDEX <= 0;
-    RegDst_out_IDEX <= 0;
-    ALUOp_out_IDEX <= 0;
-    ALUSrc_out_IDEX <= 0; 
-    size_out_IDEX <= 0;
+  always @(posedge Rst or posedge Clk_in) begin
+    if (Rst) begin
+        PCAddResult_out_IDEX <= 0;
+        ReadData1_out_IDEX <= 0;
+        ReadData2_out_IDEX <= 0;
+        signExtend_out_IDEX <= 0;
+        rt_out_IDEX <= 0;
+        rd_out_IDEX <= 0;
+        RegWrite_out_IDEX <= 0;
+        MemtoReg_out_IDEX <= 0;
+        Branch_out_IDEX <= 0;
+        MemRead_out_IDEX <= 0;
+        MemWrite_out_IDEX <= 0;
+        RegDst_out_IDEX <= 0;
+        ALUOp_out_IDEX <= 0;
+        ALUSrc_out_IDEX <= 0; 
+        size_out_IDEX <= 0;
+    end
+    else if (Clk_in) begin
+        PCAddResult_out_IDEX <= PCAddResult_in_IDEX;
+        ReadData1_out_IDEX <= ReadData1_in_IDEX;
+        ReadData2_out_IDEX <= ReadData2_in_IDEX;
+        signExtend_out_IDEX <= signExtend_in_IDEX;
+        rt_out_IDEX <= rt_in_IDEX;
+        rd_out_IDEX <= rd_in_IDEX;
+        RegWrite_out_IDEX <= RegWrite_in_IDEX;
+        MemtoReg_out_IDEX <= MemtoReg_in_IDEX;
+        Branch_out_IDEX <= Branch_in_IDEX;
+        MemRead_out_IDEX <= MemRead_in_IDEX;
+        MemWrite_out_IDEX <= MemWrite_in_IDEX;
+        RegDst_out_IDEX <= RegDst_in_IDEX;
+        ALUOp_out_IDEX <= ALUOp_in_IDEX;
+        ALUSrc_out_IDEX <= ALUSrc_in_IDEX; 
+        size_out_IDEX <= size_in_IDEX;
+    end
   end
 
-  always @(posedge Clk_in) begin
+/*  always @(posedge Clk_in) begin
     PCAddResult_out_IDEX <= PCAddResult_in_IDEX;
     ReadData1_out_IDEX <= ReadData1_in_IDEX;
     ReadData2_out_IDEX <= ReadData2_in_IDEX;
@@ -77,7 +96,7 @@ module ID_EX(PCAddResult_in_IDEX, ReadData1_in_IDEX, ReadData2_in_IDEX, signExte
     ALUOp_out_IDEX <= ALUOp_in_IDEX;
     ALUSrc_out_IDEX <= ALUSrc_in_IDEX; 
     size_out_IDEX <= size_in_IDEX;
-  end
+  end*/
 
 
 endmodule
