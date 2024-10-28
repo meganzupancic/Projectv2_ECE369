@@ -2,6 +2,7 @@ Notes after working on Sunday, October 27th:
   - post-implementation functional simulation is working for PC_pin_out, however, it is staying at 0 for a lot of clock cycles
   - need to add 32 bit output write_data 
 ! - before submitting, need to change size of memory in data memory to 1024!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! - before submitting, make sure percent effort and names and all that are in!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
