@@ -372,5 +372,3 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
 
 
 endmodule
-
-
