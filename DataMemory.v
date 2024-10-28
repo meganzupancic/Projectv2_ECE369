@@ -51,7 +51,7 @@ module DataMemory(Address, WriteData, Clk_in, MemWrite, MemRead, size, ReadData)
     initial begin
     
         //$readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/data_memory.mem", memory);
-        $readmemh("C:/Users/athiel/Downloads/data_memory.mem", memory);
+        $readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/data_memory.mem", memory);
     
     end
     
@@ -62,22 +62,22 @@ module DataMemory(Address, WriteData, Clk_in, MemWrite, MemRead, size, ReadData)
                 2'b00:
                     memory[Address[11:2]] <= WriteData;  // store word
                 2'b01:
-                    memory[Address[11:2]][7:0] <= WriteData[7:0];  // store byte
+                    memory[Address[11:2]][(Address[1:0] * 8) +: 8] <= WriteData[7:0];  // store byte
                 2'b10:
-                    memory[Address][15:0] <= WriteData[15:0];  // store halfword
+                    memory[Address[11:2]][(Address[1] * 16) +: 16] <= WriteData[15:0];  // store halfword
             endcase
         end
-    end
-    
-    always @(posedge Clk_in) begin  //load
-        if (MemRead == 1) begin
+        
+        else if (MemRead == 1) begin
             case (size)
                 2'b00:
                     ReadData <= memory[Address];  // load word
                 2'b01:
-                    ReadData <= {{24{memory[Address][7]}}, memory[Address][7:0]}; // Load byte (sign-extended)
+                    ReadData = {{24{memory[Address[11:2]][(Address[1:0] * 8) + 7]}}, 
+                                memory[Address[11:2]][(Address[1:0] * 8) +: 8]}; // Load byte (sign-extended)
                 2'b10:
-                    ReadData <= {{16{memory[Address][15]}}, memory[Address][15:0]}; // Load halfword (sign-extended)
+                    ReadData = {{16{memory[Address[11:2]][(Address[1] * 16) + 15]}}, 
+                                memory[Address[11:2]][(Address[1] * 16) +: 16]}; // Load halfword (sign-extended)
             endcase
         end 
         else begin
