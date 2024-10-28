@@ -20,10 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Top_Level(Rst, Clk);
+module Top_Level(Rst, Clk, PC_pin_out);
 
     input Rst;
     input Clk;
+
+    output PC_pin_out;
     
     wire [31:0] Instruction_IF;
     wire [31:0] PCAdder_out_IF;
@@ -68,9 +70,9 @@ module Top_Level(Rst, Clk);
     
     
     //stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF, 
-    //         PCAdder_out_IF, Clk_in, Rst);
+                        //PCAdder_out_IF, Clk_in, Rst, PC_pin);
     stage_IF top1(PCSrc_MEM, ALUAddResult_in_MEM, JR_ID, ReadData1_out_ID, Instruction_IF, 
-                    PCAdder_out_IF, Clk, Rst);
+                    PCAdder_out_IF, Clk, Rst, PC_pin_out);
     
     
     //IF_ID(PCAdder_in_IFID, Instruction_in_IFID, PCAdder_out_IFID, Instruction_out_IFID, Clk_in);
