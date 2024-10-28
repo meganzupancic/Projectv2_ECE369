@@ -11,6 +11,9 @@ module ALUControl(ALUOp, funct, ALUControl);
   always @(*) begin
     //case(ALUOp)
     //6'b000000: begin  // R-type instructions
+    
+    ALUControl = 6'b010101;  // default or value
+    
     if (ALUOp == 6'b000000) begin
         case (funct)
            6'b100000: // ADD 
@@ -78,6 +81,8 @@ module ALUControl(ALUOp, funct, ALUControl);
 		      ALUControl = 6'b000010;
 	       6'b000011: // JAL
 		      ALUControl = 6'b000011;
+		   default:
+		      ALUControl = 6'b010101;
 
     endcase
         
