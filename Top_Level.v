@@ -25,7 +25,7 @@ module Top_Level(Rst, Clk, PC_pin_out);
     input Rst;
     input Clk;
 
-    output PC_pin_out;
+    output [31:0] PC_pin_out;
     
     wire [31:0] Instruction_IF;
     wire [31:0] PCAdder_out_IF;
