@@ -34,32 +34,33 @@ module EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_
   output reg [4:0] mux2_Result_out_EXMEM;
   output reg [1:0] size_out_EXMEM;
   
-  always @(posedge Rst) begin
-      MemWrite_out_EXMEM <= 0;
-      MemRead_out_EXMEM <= 0;
-      Branch_out_EXMEM <= 0;
-      MemtoReg_out_EXMEM <= 0;
-      RegWrite_out_EXMEM <= 0;
-      ALUAddResult_out_EXMEM <= 0;
-      Zero_out_EXMEM <= 0;
-      ALUResult_out_EXMEM <= 0;
-      ReadData2_out_EXMEM <= 0;
-      mux2_Result_out_EXMEM <= 0;
-      size_out_EXMEM <= 0;
-  end
-
-  always @(posedge Clk_in) begin
-      MemWrite_out_EXMEM <= MemWrite_in_EXMEM;
-      MemRead_out_EXMEM <= MemRead_in_EXMEM;
-      Branch_out_EXMEM <= Branch_in_EXMEM;
-      MemtoReg_out_EXMEM <= MemtoReg_in_EXMEM;
-      RegWrite_out_EXMEM <= RegWrite_in_EXMEM;
-      ALUAddResult_out_EXMEM <= ALUAddResult_in_EXMEM;
-      Zero_out_EXMEM <= Zero_in_EXMEM;
-      ALUResult_out_EXMEM <= ALUResult_in_EXMEM;
-      ReadData2_out_EXMEM <= ReadData2_in_EXMEM;
-      mux2_Result_out_EXMEM <= mux2_Result_in_EXMEM;
-      size_out_EXMEM <= size_in_EXMEM;
+  always @(posedge Rst or posedge Clk_in) begin
+      if (Rst) begin
+          MemWrite_out_EXMEM <= 0;
+          MemRead_out_EXMEM <= 0;
+          Branch_out_EXMEM <= 0;
+          MemtoReg_out_EXMEM <= 0;
+          RegWrite_out_EXMEM <= 0;
+          ALUAddResult_out_EXMEM <= 0;
+          Zero_out_EXMEM <= 0;
+          ALUResult_out_EXMEM <= 0;
+          ReadData2_out_EXMEM <= 0;
+          mux2_Result_out_EXMEM <= 0;
+          size_out_EXMEM <= 0;
+      end
+      else if (Clk_in) begin
+          MemWrite_out_EXMEM <= MemWrite_in_EXMEM;
+          MemRead_out_EXMEM <= MemRead_in_EXMEM;
+          Branch_out_EXMEM <= Branch_in_EXMEM;
+          MemtoReg_out_EXMEM <= MemtoReg_in_EXMEM;
+          RegWrite_out_EXMEM <= RegWrite_in_EXMEM;
+          ALUAddResult_out_EXMEM <= ALUAddResult_in_EXMEM;
+          Zero_out_EXMEM <= Zero_in_EXMEM;
+          ALUResult_out_EXMEM <= ALUResult_in_EXMEM;
+          ReadData2_out_EXMEM <= ReadData2_in_EXMEM;
+          mux2_Result_out_EXMEM <= mux2_Result_in_EXMEM;
+          size_out_EXMEM <= size_in_EXMEM;
+      end
   end
 
 
