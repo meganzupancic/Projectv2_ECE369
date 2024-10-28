@@ -54,6 +54,9 @@ module ALU32Bit(ALUControl, A, B, ALUResult, Zero);
 
 
 	always @(*) begin
+	
+	   ALUResult <= 0;  // default value
+	   Zero <= 0;
 
 		case (ALUControl)
 			6'b100000: // ADD, Load byte, Store byte, Store half, Load half
@@ -77,15 +80,15 @@ module ALU32Bit(ALUControl, A, B, ALUResult, Zero);
 			6'b101010: // slt
 				ALUResult <= (A < B) ? 32'b1 : 32'b0;
 			6'b001000: // jr
-				ALUResult = A;
+				ALUResult <= A;
 
-			//FIXME below
 			6'b000001: begin // BGEZ & BLTZ
+			
 				if (B == 1) begin  //BGEZ
-					Zero = (A >= 0) ? 1'b1 : 1'b0;
+					Zero <= (A >= 0) ? 1'b1 : 1'b0;
 				end
 				else if (B == 0) begin  //BLTZ
-					Zero = (A < 0) ? 1'b1 : 1'b0;
+					Zero <= (A < 0) ? 1'b1 : 1'b0;
 				end
 			end
 			///////////////////
@@ -109,22 +112,17 @@ module ALU32Bit(ALUControl, A, B, ALUResult, Zero);
     				Zero <= (A <= 0) ? 1'b1 : 1'b0;
 			
 		  	6'b000010: // J
-			  	ALUResult = 32'b0;
+			  	ALUResult <= 32'b0;
 		  	6'b000011: // JAL
-			  	ALUResult = 32'b0;
+			  	ALUResult <= 32'b0;
 			default: begin
 				ALUResult <= 32'b0;
 				Zero <= 1'b0;
 			end
+			
 		endcase
-		//if (ALUResult == 0) begin
-		//  Zero <= 1;
-		//end 
-		//else begin
-		//  Zero <= 0;
-		//end
+		
 	end
-
 
 endmodule
 
