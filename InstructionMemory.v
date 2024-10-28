@@ -77,7 +77,7 @@ module InstructionMemory(Address, Instruction);
     //always @(posedge Clk_in) begin // mixed level sensitive and edge triggered event controls are not supported for synthesis: posedge Clk_in, Address
             //Instruction <= memory[Address[8:2]];   
     //end
-    assign Instruction = memory[Address[8:2]];
+    assign Instruction = memory[Address[10:2]];
 
 endmodule
 
