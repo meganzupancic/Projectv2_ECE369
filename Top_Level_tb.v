@@ -13,7 +13,8 @@ module Top_Level_tb();
     // Instantiate the Top_Level module
     Top_Level DUT (
         .Rst(Rst_tb),
-        .Clk(Clk_tb)
+        .Clk(Clk_tb),
+        .PC_pin_out(PC_pin_out_tb)
     );
 
     // Connect the internal signals to the DUT's output signals
