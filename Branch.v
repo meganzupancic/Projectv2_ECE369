@@ -9,7 +9,7 @@ module Branch(Branch, Zero, PCSrc);
     assign PCSrc = 0;
   end
   */
-  always @(Zero) begin
+  always @(Branch or Zero) begin
     PCSrc <= Branch & Zero;
   end
 
