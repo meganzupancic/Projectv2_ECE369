@@ -81,6 +81,6 @@ module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF,
     //InstructionMemory(Address, Instruction, Clk_in);
     InstructionMemory a5(PCResult_IF, Instruction_IF);
     
-    assign PC_pin = mux5_result_IF;
+    assign PC_pin = PCResult_IF;
     
 endmodule
