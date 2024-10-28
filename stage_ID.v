@@ -45,7 +45,7 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
 
   //Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL, size);
   Controller b3(Instruction_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID, Branch_ID, MemRead_ID, MemWrite_ID, MemtoReg_ID, RegWrite_out_ID, JR_ID, JAL_ID, size_ID);
-  
+  //Controller b3(Instruction_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID, Branch_ID, MemRead_ID, MemWrite_ID, MemtoReg_ID, RegWrite_out_ID);
   
   //Mux32Bit2To1(inA, inB, sel, out);
   Mux5Bit2To1 b4(WriteRegister_in, 31, JAL_ID, mux6_result_ID);
