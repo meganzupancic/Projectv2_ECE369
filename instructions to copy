@@ -1,1 +1,87 @@
+addi $t1, $zero, 6
+nop
+nop
+nop
+nop
+nop
+add $t2, $t1, $t1
+nop
+nop
+nop
+nop
+nop
+sw $t2, 4($t1)
+nop
+nop
+nop
+nop
+nop
+lw $t3, 4($t1)
+nop
+nop
+nop
+nop
+nop
+sub $t4, $t3, $t1
+nop
+nop
+nop
+nop
+nop
+mul $t0, $t1, $t4
+nop
+nop
+nop
+nop
+nop
+and $t3, $t1, $t2
+nop
+nop
+nop
+nop
+nop
+andi $t4, $t2, 13
+nop
+nop
+nop
+nop
+nop
+or $t5, $t0, $t1
+nop
+nop
+nop
+nop
+nop
+ori $t6, $t5, 15
+nop
+nop
+nop
+nop
+nop
+nor $t7, $t5, $t2
+nop
+nop
+nop
+nop
+nop
+xor $t0, $t0, $t1
+nop
+nop
+nop
+nop
+nop
+xori $t1, $t2, 7
+nop
+nop
+nop
+nop
+nop
+
+
+
+
+
+
+
+
 
