@@ -83,4 +83,5 @@ module stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF,
     
     assign PC_pin = PCResult_IF;
     
+    
 endmodule
