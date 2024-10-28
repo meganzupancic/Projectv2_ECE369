@@ -18,7 +18,7 @@ addi:
                          rt = $t2 = reg #10,   ReadData2 = 12
                          imm = 4
                          memory[6 + 4] = memory[10] 
-                         want memory[10] = 12
+                         WANT memory[10] = 12
                          PC = 48  (address of instruction)
 
 4. lw $t3, 4($t1)      ->  value in memory[$t1 value + imm] stored into reg $t3        lw: rt = memory[rs value + imm]
@@ -26,17 +26,33 @@ addi:
                         rt = $t3 = reg #11,   ReadData2 = X
                         imm = 4
                         memory[6 + 4] = memory[10]
-                        want $t3 (reg #11) = 12
+                        WANT $t3 (reg #11) = 12
                         PC = 72  (address of instruction)
 
 5. sub $t4, $t3, $t1   -> $t4 = 12 - 6 
                           rs = $t3 = reg #11,  ReadData1 = 12
                           rt = $t1 = reg #9,   ReadData2 = 6
                           rd = $t4 = reg #12
-                          want $t4 (reg #12) = 6
+                          WANT $t4 (reg #12) = 6
                           PC = 96  (address of instruction)
 
-6. mul $t0, $t1, $t4   -> 
+6. mul $t0, $t1, $t4   -> $t0 = 6 * 6
+                          rs = $t1 = reg #9,   ReadData1 = 6
+                          rt = $t4 = reg #12,  ReadData2 =6
+                          rd = $t0 = reg #8
+                          WANT $t0 (reg #8) = 36
+                          PC = 96  (address of instruction)
+
+7. and $t3, $t1, $t2   -> $t3 = 6 & 12 = 00110 & 01100 = 4
+                          rs = $t1 = reg #9,     ReadData1 = 6
+                          rt = $t2 = reg #10,    ReadData2 = 12
+                          rd = $t3 = reg #11,    current value = 12
+                          WANT $t3 (reg #11) = 4
+                          PC = 144  (address of instruction)
+
+8. 
+
+
 
   
 
