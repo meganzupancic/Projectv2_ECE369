@@ -1,0 +1,82 @@
+.data                   	# Put Global Data here
+
+.text				# Put program here 
+.globl main			# globally define 'main' 
+
+main: 
+
+addi $t1, $zero, 6
+nop
+nop
+nop
+nop
+nop
+add $t2, $t1, $t1
+nop
+nop
+nop
+nop
+nop
+lh $t3, 0($t2)
+nop
+nop
+nop
+nop
+nop
+lb $t4, 0($t2)
+nop
+nop
+nop
+nop
+nop
+sh $t3, 0($t5)
+nop
+nop
+nop
+nop
+nop
+sb $t4, 0($t6)
+nop
+nop
+nop
+nop
+nop
+
+
+
+20090006
+00000000
+00000000
+00000000
+00000000
+00000000
+01295020
+00000000
+00000000
+00000000
+00000000
+00000000
+854b0000
+00000000
+00000000
+00000000
+00000000
+00000000
+814c0000
+00000000
+00000000
+00000000
+00000000
+00000000
+a5ab0000
+00000000
+00000000
+00000000
+00000000
+00000000
+a1cc0000
+00000000
+00000000
+00000000
+00000000
+00000000
