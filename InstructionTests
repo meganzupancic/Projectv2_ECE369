@@ -92,25 +92,30 @@ addi:
                           WANT $t1 (reg #9) = 11
                           PC = 288
 
-14. jump loop  ->  loop is at xor instruction, which is PC instruction address 264
+14.1 jump loop  ->  loop is at xor instruction, which is PC instruction address 264
                    opcode = 000010
                    address = 264
                    WANT PC_pin = 264
 
-14. beq $t0, $t1, -6  -> rs = $t0 (reg #8) = 34
+14.2 beq $t0, $t1, -6  -> rs = $t0 (reg #8) = 34
                          rt = $t1 (reg #9) = 11
                          imm = -7
                          WANT no branch
 
-15. beq $t2, $t4, -13  -> rs = $t2 (reg #10) = 12
-                          rt = $t4 (reg #10) = 12
-                          imm = -14
-                          WANT to jump to 14 lines before (the xori instruction), instruction address 288
+15.2 beq $t2, $t4, -13  -> rs = $t2 (reg #10) = 12
+                           rt = $t4 (reg #10) = 12
+                           imm = -14
+                           WANT to jump to 14 lines before (the xori instruction), instruction address 288
 
+14.3 bne $t2, $t4, -6  ->  rs = $t2 (reg #10) = 12
+                           rt = $t4 (reg #10) = 12
+                           imm = -6
+                           WANT no branch
 
-
-
-
+15.3 bne $t0, $t1, -13  -> rs = $t0 (reg #8) = 34
+                           rt = $t1 (reg #9) = 11
+                           imm = -13
+                           WANT to jump to 14 lines before (the xori instruction), instruction address 288
 
 
 
