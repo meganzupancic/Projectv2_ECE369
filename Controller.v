@@ -94,6 +94,21 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     end
                 end
                 
+                6'b011100: begin  // MUL
+                    RegDst <= 1;
+                    ALUOp <= 6'b011100;
+                    //ALUZero <= 0;     //doesn't matter
+                    ALUSrc <= 0;
+                    Branch <= 0;      
+                    MemRead <= 0;     //doesn't matter
+                    MemWrite <= 0;
+                    MemtoReg <= 1;
+                    RegWrite <= 1;
+                    JR <= 0;
+                    JAL <= 0;
+                    //PCSrc <= 0;       //doesn't matter
+                end
+                
                 6'b001000: begin // ADDI
                     RegDst <= 0;      // result goes to register rt [20:16]
                     ALUOp <= 6'b001000;
