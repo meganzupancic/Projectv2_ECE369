@@ -51,12 +51,12 @@ module DataMemory(Address, WriteData, Clk_in, MemWrite, MemRead, size, ReadData)
     initial begin
     
         //$readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/data_memory.mem", memory);
-        $readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/data_memory.mem", memory);
+        $readmemh("C:/Users/meganzupancic/Downloads/data_memory.mem", memory);
     
     end
     
     //always @(posedge Clk_in) begin
-    always @(posedge Clk_in) begin  // store
+    always @(negedge Clk_in) begin  // store
         if (MemWrite == 1) begin
             case (size)
                 2'b00:
@@ -71,12 +71,12 @@ module DataMemory(Address, WriteData, Clk_in, MemWrite, MemRead, size, ReadData)
         else if (MemRead == 1) begin
             case (size)
                 2'b00:
-                    ReadData <= memory[Address];  // load word
+                    ReadData <= memory[Address[11:2]];  // load word
                 2'b01:
-                    ReadData = {{24{memory[Address[11:2]][(Address[1:0] * 8) + 7]}}, 
+                    ReadData <= {{24{memory[Address[11:2]][(Address[1:0] * 8) + 7]}}, 
                                 memory[Address[11:2]][(Address[1:0] * 8) +: 8]}; // Load byte (sign-extended)
                 2'b10:
-                    ReadData = {{16{memory[Address[11:2]][(Address[1] * 16) + 15]}}, 
+                    ReadData <= {{16{memory[Address[11:2]][(Address[1] * 16) + 15]}}, 
                                 memory[Address[11:2]][(Address[1] * 16) +: 16]}; // Load halfword (sign-extended)
             endcase
         end 
