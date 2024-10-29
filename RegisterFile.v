@@ -73,18 +73,8 @@ module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, Rea
         // Initialize other registers if needed
         $display("RegisterFile[0] = %h", RegisterFile[000000]);
     end
-	
-    //$display("Read from Register %0d: %h", Instruction[25:21], ReadData1);
-	always @(negedge Clk_in) begin // negedge Clk
-		//ReadData1 <= RegisterFile[ReadRegister1];
-		ReadData1 <= RegisterFile[Instruction[25:21]];  // rs
-		$display("Read1 from Register %0d: %h", Instruction[25:21], ReadData1);
-		//ReadData2 <= RegisterFile[ReadRegister2];
-		ReadData2 <= RegisterFile[Instruction[20:16]];  //rt
-		$display("Read2 from Register %0d: %h", Instruction[20:16], ReadData2);
-	end
-	
-	always @(posedge Clk_in) begin // posedge Clk
+    
+    always @(posedge Clk_in) begin // posedge Clk
 		if (RegWrite == 1) begin 
 	       		//RegisterFile[WriteRegister] <= WriteData;
 			RegisterFile[WriteRegister] <= WriteData;
@@ -95,6 +85,18 @@ module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, Rea
 	   	   $display ("RegWrite != 1");
 	   	end
 	end
+	
+    //$display("Read from Register %0d: %h", Instruction[25:21], ReadData1);
+	always @(*) begin // negedge Clk
+		//ReadData1 <= RegisterFile[ReadRegister1];
+		ReadData1 <= RegisterFile[Instruction[25:21]];  // rs
+		$display("Read1 from Register %0d: %h", Instruction[25:21], ReadData1);
+		//ReadData2 <= RegisterFile[ReadRegister2];
+		ReadData2 <= RegisterFile[Instruction[20:16]];  //rt
+		$display("Read2 from Register %0d: %h", Instruction[20:16], ReadData2);
+	end
+	
+	
 
 endmodule
 
