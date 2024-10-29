@@ -7,16 +7,18 @@ module Top_Level_tb();
     reg Rst_tb;
     
     // Internal signals to monitor
-    wire [31:0] PC_current;
-    wire [31:0] DestRegValue;
+    //wire [31:0] PC_current;
+    //wire [31:0] DestRegValue;
     
     wire [31:0] PC_pin_out_tb;
+    wire [31:0] write_data_pin_tb;
     
     // Instantiate the Top_Level module
     Top_Level DUT (
         .Rst(Rst_tb),
         .Clk(Clk_tb),
-        .PC_pin_out(PC_pin_out_tb)
+        .PC_pin_out(PC_pin_out_tb),
+        .write_data_pin(write_data_pin_tb)
     );
 
     // Connect the internal signals to the DUT's output signals
@@ -26,21 +28,20 @@ module Top_Level_tb();
     // Clock generation
     initial begin
         Clk_tb = 0;
-        forever #5 Clk_tb = ~Clk_tb;  // 10ns clock period
+        forever #50 Clk_tb = ~Clk_tb;  // 10-ns clock period because of board
     end
 
     // Reset sequence
     initial begin
-        
         Rst_tb = 1;
-        #20;
+        #200;
         Rst_tb = 0;
     end
     
     
 
     // Monitor the values of PC and destination register
-    initial begin
+    /*initial begin
     
         //$display("%h", DUT.JR);
         
@@ -53,12 +54,12 @@ module Top_Level_tb();
             @(posedge Clk_tb);  // Wait for the positive edge of Clk
             $display("%0dns\t%h\t%h", $time, PC_current, DestRegValue);
         end
-    end
+    end*/
 
     // Simulation stop condition (adjust based on program length)
     initial begin
-        #300;
-        $finish;
+        #1000000;
+        //$finish;
     end
 
 endmodule
