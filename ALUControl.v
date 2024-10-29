@@ -23,8 +23,8 @@ module ALUControl(ALUOp, funct, ALUControl, shift_select);
 	       6'b100010: // SUB
               ALUControl = 6'b100010;
            //6'b011000: begin // MUL
-	       6'b011000: // MUL
-              ALUControl = 6'b011000;
+	       //6'b011000: // MUL
+              //ALUControl = 6'b011000;
 	       6'b100100: // AND
               ALUControl = 6'b100100;
 	       6'b100101: // OR
@@ -50,7 +50,7 @@ module ALUControl(ALUOp, funct, ALUControl, shift_select);
 	
 	else begin
 	    case (ALUOp)
-	       6'b011100:
+	       6'b011100:  // MUL
 	           ALUControl = 6'b011000;
 
            6'b101011: // SW
