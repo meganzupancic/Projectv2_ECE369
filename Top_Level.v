@@ -20,12 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Top_Level(Rst, Clk, PC_pin_out);
+module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
 
     input Rst;
     input Clk;
     
     output [31:0] PC_pin_out;
+    output [31:0] write_data_pin;
     
     wire [31:0] Instruction_IF;
     wire [31:0] PCAdder_out_IF;
@@ -85,7 +86,7 @@ module Top_Level(Rst, Clk, PC_pin_out);
     stage_ID top3(PCAdder_out_IFID, Instruction_out_IFID, RegWrite_out_MEMWB, mux2_result_out_MEMWB, mux3_result_WB,
                     RegWrite_out_ID, MemtoReg_ID, Branch_ID, MemRead_ID, MemWrite_ID, RegDst_ID, ALUOp_ID, 
                     ALUSrc_ID, PCAddResult_out_ID, ReadData1_out_ID, ReadData2_out_ID, SignExtResult_ID, 
-                    rt_ID, rd_ID, JR_ID, size_ID, Clk);
+                    rt_ID, rd_ID, JR_ID, size_ID, Clk, write_data_pin);
                     
     //ID_EX(PCAddResult_in_IDEX, ReadData1_in_IDEX, ReadData2_in_IDEX, signExtend_in_IDEX, rt_in_IDEX, 
     //            rd_in_IDEX, RegWrite_in_IDEX, MemtoReg_in_IDEX, Branch_in_IDEX, MemRead_in_IDEX, 
