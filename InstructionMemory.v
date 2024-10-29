@@ -53,7 +53,8 @@ module InstructionMemory(Address, Instruction);
         $display("Address = %h", Address);
     
         //$readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/addi_$t1_$zero_6.mem", memory);
-        $readmemh("C:/Users/meganzupancic/Downloads/test.mem", memory);
+        //$readmemh("C:/Users/meganzupancic/Downloads/test.mem", memory); 
+        $readmemh("C:/Users/athiel/Downloads/testv2.mem", memory);
         
         
         $display("Memory Contents:");
