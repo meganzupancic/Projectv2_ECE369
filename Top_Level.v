@@ -71,7 +71,7 @@ module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
     
     //stage_IF(PCSrc, AddALU_out_MEM, JR, ReadData1_ID, Instruction_IF, 
     //         PCAdder_out_IF, Clk_in, Rst, PC_pin);
-    stage_IF top1(PCSrc_MEM, ALUAddResult_out_EXMEM, JR_ID, ReadData1_out_ID, Instruction_IF, 
+    stage_IF top1(PCSrc_MEM, ALUAddResult_out_EXMEM, JR_out_MEMWB, mux3_result_WB, Instruction_IF, 
                     PCAdder_out_IF, Clk, Rst, PC_pin_out);
     
     
@@ -102,7 +102,7 @@ module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
                 rt_out_IDEX, rd_out_IDEX, RegWrite_out_IDEX, MemtoReg_out_IDEX, Branch_out_IDEX, 
                 MemRead_out_IDEX, MemWrite_out_IDEX, 
                 RegDst_out_IDEX, ALUOp_out_IDEX, ALUSrc_out_IDEX,
-                size_ID, size_out_IDEX, Clk, Rst);
+                size_ID, size_out_IDEX, Clk, Rst, JR_ID, JR_out_IDEX);
                 
                 
      //stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, MemWrite_in_EX, RegDst_EX, 
@@ -114,7 +114,7 @@ module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
                     ALUOp_out_IDEX, ALUSrc_out_IDEX, PCAddResult_out_IDEX, ReadData1_out_IDEX, ReadData2_out_IDEX, signExtend_out_IDEX,
                     rt_out_IDEX, rd_out_IDEX, RegWrite_out_EX, MemtoReg_out_EX, 
                     Branch_out_EX, MemRead_out_EX, MemWrite_out_EX, ALUAddResult_EX, Zero_EX, ALUResult_EX, 
-                    ReadData2_out_EX, mux2_result_EX, size_out_IDEX, size_out_EX);
+                    ReadData2_out_EX, mux2_result_EX, size_out_IDEX, size_out_EX, JR_out_IDEX, JR_out_EX);
                     
                     
      //EX_MEM(MemWrite_in_EXMEM, MemRead_in_EXMEM, Branch_in_EXMEM, MemtoReg_in_EXMEM, 
@@ -130,7 +130,7 @@ module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
                 MemWrite_out_EXMEM, MemRead_out_EXMEM, Branch_out_EXMEM, MemtoReg_out_EXMEM, 
                 RegWrite_out_EXMEM, ALUAddResult_out_EXMEM, Zero_out_EXMEM, ALUResult_out_EXMEM, 
                 ReadData2_out_EXMEM, mux2_Result_out_EXMEM,
-                size_out_EX, size_out_EXMEM, Clk, Rst);
+                size_out_EX, size_out_EXMEM, Clk, Rst, JR_out_EX, JR_out_EXMEM);
                 
                 
       
@@ -143,7 +143,7 @@ module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
                         /*ALUAddResult_out_EXMEM,*/ Zero_out_EXMEM, ALUResult_out_EXMEM, ReadData2_out_EXMEM,
                         mux2_Result_out_EXMEM, MemtoReg_out_MEM, PCSrc_MEM, ALUResult_out_MEM, 
                         mux2_result_out_MEM, ReadData_MEM, RegWrite_out_MEM, ReadData2_out_MEM,
-                        size_out_EXMEM, Clk);
+                        size_out_EXMEM, Clk, JR_out_EXMEM, JR_out_MEM);
                         
                         
       //MEM_WB(MemtoReg_in_MEMWB, RegWrite_in_MEMWB, ALUResult_in_MEMWB, 
@@ -155,7 +155,7 @@ module Top_Level(Rst, Clk, PC_pin_out, write_data_pin);
                     ReadData_MEM, mux2_result_out_MEM, 
                     MemtoReg_out_MEMWB, RegWrite_out_MEMWB, ALUResult_out_MEMWB, 
                     ReadData_out_MEMWB, mux2_result_out_MEMWB,
-                    Clk, Rst);
+                    Clk, Rst, JR_out_MEM, JR_out_MEMWB);
                     
                     
        //stage_WB (ReadData_WB, ALUResult_WB, MemtoReg_WB, mux3_result_WB);
