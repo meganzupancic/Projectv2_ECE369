@@ -13,6 +13,7 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
   wire [4:0] mux6_result_ID;
   wire [31:0] mux7_result_ID;  
   wire JAL_ID;
+  wire RegWrite_JAL;
 
 
   output RegWrite_out_ID;
@@ -37,15 +38,14 @@ module stage_ID (PCAddResult_in_ID, Instruction_ID, RegWrite_in, WriteRegister_i
   assign rt_ID = Instruction_ID[20:16];
   assign rd_ID = Instruction_ID[15:11];
   
- //RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, 
- //                   ReadRegister1, ReadRegister2, Clk_in, ReadData1, ReadData2);
-  RegisterFile b1(Instruction_ID, mux6_result_ID, mux7_result_ID, RegWrite_in, Clk_in, ReadData1_out_ID, ReadData2_out_ID);
+ //RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, ReadData1, ReadData2, RegWrite_JAL);
+  RegisterFile b1(Instruction_ID, mux6_result_ID, mux7_result_ID, RegWrite_in, Clk_in, ReadData1_out_ID, ReadData2_out_ID, RegWrite_JAL);
 
   //SignExtension(Instruction, out);
   SignExtension b2(Instruction_ID, SignExtResult_ID);
 
-  //Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL, size);
-  Controller b3(Instruction_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID, Branch_ID, MemRead_ID, MemWrite_ID, MemtoReg_ID, RegWrite_out_ID, JR_ID, JAL_ID, size_ID);
+  //Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL, size, RegWrite_JAL);
+  Controller b3(Instruction_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID, Branch_ID, MemRead_ID, MemWrite_ID, MemtoReg_ID, RegWrite_out_ID, JR_ID, JAL_ID, size_ID, RegWrite_JAL);
   //Controller b3(Instruction_ID, RegDst_ID, ALUOp_ID, ALUSrc_ID, Branch_ID, MemRead_ID, MemWrite_ID, MemtoReg_ID, RegWrite_out_ID);
   
   //Mux32Bit2To1(inA, inB, sel, out);
