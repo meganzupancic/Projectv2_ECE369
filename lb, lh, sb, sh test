@@ -17,31 +17,31 @@ nop
 nop
 nop
 nop
-lh $t3, 0($t2)   // PC = 72
+lh $t3, 0($t2)   // PC = 48
 nop
 nop
 nop
 nop
 nop
-lb $t4, 0($t2)   // PC = 96
+lb $t4, 0($t2)   // PC = 72
 nop
 nop
 nop
 nop
 nop
-sh $t3, 0($t1)   // PC = 120
+sh $t3, 0($t1)   // PC = 96
 nop
 nop
 nop
 nop
 nop
-sb $t3, 0($t1)   // PC = 148
+sb $t3, 0($t1)   // PC = 120
 nop
 nop
 nop
 nop
 nop
-mul $t1, $t1, $t1   // PC = 172
+mul $t1, $t1, $t1   // PC = 148     011100_01001_01001_01001_00000_000010
 
 
 
