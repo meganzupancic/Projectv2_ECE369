@@ -117,6 +117,10 @@ addi:
                            imm = -13
                            WANT to jump to 14 lines before (the xori instruction), instruction address 288
 
+14.4 bgtz $t0, -6
+
+15.4 bgtz $t7, -13
+
 
 
 
