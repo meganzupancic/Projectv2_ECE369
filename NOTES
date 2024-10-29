@@ -3,5 +3,11 @@ Notes after working on Sunday, October 27th:
 ! - before submitting, make sure percent effort and names and all that are in!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! - before submitting, make sure to rename test.mem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+
+Questions:
+  - nor?
+  - jump? 
+
+
 mul instruction:
   - mul $t0, $t1, $t4  = 012c4018
