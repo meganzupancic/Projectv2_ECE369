@@ -102,7 +102,7 @@ addi:
                          imm = -7
                          WANT no branch
 
-15. beq $t2, $t4, -12  -> rs = $t2 (reg #10) = 12
+15. beq $t2, $t4, -13  -> rs = $t2 (reg #10) = 12
                           rt = $t4 (reg #10) = 12
                           imm = -14
                           WANT to jump to 14 lines before (the xori instruction), instruction address 288
