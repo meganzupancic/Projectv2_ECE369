@@ -37,7 +37,9 @@ module stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, Me
   wire [31:0] SL_result_EX;
   wire [31:0] mux1_result_EX;
   wire [5:0] ALUControl_EX;
- 
+  wire shift_sel;
+  wire [31:0] mux8_result_EX;
+  wire [31:0] out_ze;
 
   assign RegWrite_out_EX = RegWrite_in_EX;
   assign MemtoReg_out_EX = MemtoReg_in_EX;
@@ -55,12 +57,18 @@ module stage_EX (RegWrite_in_EX, MemtoReg_in_EX, Branch_in_EX, MemRead_in_EX, Me
 
   //Mux32Bit2To1(inA, inB, sel, out);
   Mux32Bit2To1 c3(ReadData2_in_EX, SignExtResult_EX, ALUSrc_EX, mux1_result_EX);
+  
+  //ZeroExtend5Bit(shamt, out);
+  ZeroExtend5Bit ze(SignExtResult_EX[10:6], out_ze);
+  
+  //Mux32Bit2To1(inA, inB, sel, out);
+  Mux32Bit2To1 mux8(ReadData1_EX, out_ze, shift_select, mux8_result_EX);
 
-  //ALUControl(ALUOp, funct, ALUControl);
-  ALUControl c4(ALUOp_EX, SignExtResult_EX[5:0], ALUControl_EX);    // if there is an error, we want 6 bits from SignExtResult
+  //ALUControl(ALUOp, funct, ALUControl, shift_select);
+  ALUControl c4(ALUOp_EX, SignExtResult_EX[5:0], ALUControl_EX, shift_select);    // if there is an error, we want 6 bits from SignExtResult
 
   //ALU32Bit(ALUControl, A, B, ALUResult, Zero);
-  ALU32Bit c5(ALUControl_EX, ReadData1_EX, mux1_result_EX, ALUResult_EX, Zero_EX);
+  ALU32Bit c5(ALUControl_EX, mux8_result_EX, mux1_result_EX, ALUResult_EX, Zero_EX);
 
   //Mux5Bit2To1(inA, inB, sel, out);
   Mux5Bit2To1 c6(rt_EX, rd_EX, RegDst_EX, mux2_result_EX);
