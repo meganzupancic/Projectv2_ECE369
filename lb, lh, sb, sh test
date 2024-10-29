@@ -5,25 +5,25 @@
 
 main: 
 
-addi $t1, $zero, 6
-nop
-nop
-nop
-nop
-nop
-add $t2, $t1, $t1
-nop
-nop
-nop
-nop
-nop
-lh $t3, 0($t2)
-nop
-nop
-nop
-nop
-nop
-lb $t4, 0($t2)
+addi $t1, $zero, 6    // PC = 0 
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+add $t2, $t1, $t1    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+lh $t3, 0($t2)    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+nop    // PC = 0
+lb $t4, 0($t2)    // PC = 0
 nop
 nop
 nop
@@ -56,6 +56,12 @@ nop
 00000000
 00000000
 00000000
+8d4b0000
+00000000
+00000000
+00000000
+00000000
+00000000
 854b0000
 00000000
 00000000
@@ -80,3 +86,4 @@ a1cc0000
 00000000
 00000000
 00000000
+
