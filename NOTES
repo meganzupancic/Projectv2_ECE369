@@ -5,9 +5,10 @@ Notes after working on Sunday, October 27th:
 
 
 Questions:
-  - nor?
-  - jump? 
-  - data memory?
+  - nor? What to do about leading zeros turning into 1s.
+  - jump? Just numerical?
+  - data memory? Needs to populate?
+  - bgez: rt should be either 0 or 1. Do we need a mux for that? Do we need to pull the rt wire to the ALU?
 
 
 mul instruction:
