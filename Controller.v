@@ -90,6 +90,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                         JR <= 1;
                     end
                 end
+                
                 6'b001000: begin // ADDI
                     RegDst <= 0;      // result goes to register rt [20:16]
                     ALUOp <= 6'b001000;
@@ -135,6 +136,20 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                 6'b001110: begin // XORI
                     RegDst <= 0;      // result goes to register rt [20:16]
                     ALUOp <= 6'b001110;
+                    //ALUZero <= 0;     //doesn't matter
+                    ALUSrc <= 1;      // takes the 'imm' value at the mux
+                    Branch <= 0;      
+                    MemRead <= 0;     //doesn't matter
+                    MemWrite <= 0;
+                    MemtoReg <= 1;
+                    RegWrite <= 1;
+                    JR <= 0;  
+                    JAL <= 0;
+                    //PCSrc <= 0;       //doesn't matter
+                end
+                6'b001010: begin // SLTI
+                    RegDst <= 0;      // result goes to register rt [20:16]
+                    ALUOp <= 6'b001010;
                     //ALUZero <= 0;     //doesn't matter
                     ALUSrc <= 1;      // takes the 'imm' value at the mux
                     Branch <= 0;      
