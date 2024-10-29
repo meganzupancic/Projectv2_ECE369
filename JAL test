@@ -24,7 +24,7 @@ nop
 nop
 nop
 nop
-loop: sw $t2, 4($t1)
+loop: sw $t2, 0($t1)
 nop
 nop
 nop
