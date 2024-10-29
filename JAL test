@@ -17,7 +17,7 @@ nop
 nop
 nop
 nop
-jal 6
+jal 6   // PC = 48
 jal loop
 nop
 nop
