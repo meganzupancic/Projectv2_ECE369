@@ -70,25 +70,24 @@ module ALU32Bit(ALUControl, A, B, ALUResult, Zero);
 			6'b100101: // OR
 				ALUResult <= A | B;
 			6'b100111: // NOR
-				ALUResult <= ~(A | B);
+				ALUResult <= ~($signed(A | B));
 			6'b100110: // XOR
 				ALUResult <= A ^ B;
 			6'b000000: // sll
-				ALUResult <= A << (B[4:0]);
+				ALUResult <= B * (2**A);
 			6'b111111: // srl               // manually changed to all 1s 
-				ALUResult <= A >> (B[4:0]);
+				ALUResult <= B / (2**A);
 			6'b101010: // slt
 				ALUResult <= (A < B) ? 32'b1 : 32'b0;
 			6'b001000: // jr
 				ALUResult <= A;
 
 			6'b000001: begin // BGEZ & BLTZ
-			
-				if (B == 1) begin  //BGEZ
-					Zero <= (A >= 0) ? 1'b1 : 1'b0;
+				if (B == 5'b00001) begin  //BGEZ
+					Zero <= ($signed(A) >= 0) ? 1'b1 : 1'b0;
 				end
 				else if (B == 0) begin  //BLTZ
-					Zero <= (A < 0) ? 1'b1 : 1'b0;
+					Zero <= ($signed(A) < 0) ? 1'b1 : 1'b0;
 				end
 			end
 			///////////////////
@@ -103,16 +102,18 @@ module ALU32Bit(ALUControl, A, B, ALUResult, Zero);
 
 			
 			6'b000100: // BEQ
-    				Zero <= (A == B) ? 1'b1 : 1'b0;
+    				Zero <= ($signed(A) == $signed(B)) ? 1'b1 : 1'b0;
 			6'b000101: // BNE
-   				    Zero <= (A != B) ? 1'b1 : 1'b0;
+   				    Zero <= ($signed(A) != $signed(B)) ? 1'b1 : 1'b0;
 			6'b000111: // BGTZ
-    				Zero <= (A > 0) ? 1'b1 : 1'b0;
+    				Zero <= ($signed(A) > 0) ? 1'b1 : 1'b0;
 			6'b000110: // BLEZ
-    				Zero <= (A <= 0) ? 1'b1 : 1'b0;
+    				Zero <= ($signed(A) <= 0) ? 1'b1 : 1'b0;
 			
-		  	6'b000010: // J
+		  	6'b000010: begin // J
 			  	ALUResult <= 32'b0;
+			  	Zero <= 1'b1;
+			end
 		  	6'b000011: // JAL
 			  	ALUResult <= 32'b0;
 			default: begin
