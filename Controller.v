@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL, size);
+module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite, MemtoReg, RegWrite, JR, JAL, size, RegWrite_JAL);
     //input wire Clk;
     //input wire Rst;
     
@@ -39,6 +39,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
     output reg JR;
     output reg JAL;
     output reg [1:0] size;
+    output reg RegWrite_JAL;
 
     wire [5:0] operation;
     assign operation = Instruction[31:26];
@@ -68,6 +69,8 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
             JR <= 0;  
             JAL <= 0;
             size <= 0;
+            RegWrite_JAL <= 0;
+            
     
 
         $display("operation: %b", operation);
@@ -86,7 +89,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     JR <= 0;
                     JAL <= 0;
                     //PCSrc <= 0;       //doesn't matter
-                    if (Instruction[5:0] == 001000) begin
+                    if (Instruction[5:0] == 6'b001000) begin
                         JR <= 1;
                     end
                 end
@@ -348,11 +351,12 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     ALUSrc <= 1;            
                     Branch <= 1;     
                     MemRead <= 0;     
-                    MemWrite <= 1;    
+                    MemWrite <= 0;    
                     MemtoReg <= 0;   
-                    RegWrite <= 0;  
+                    RegWrite <= 1;  
                     JR <= 0;  
-                    JAL <= 1;  
+                    JAL <= 1; 
+                    RegWrite_JAL <= 1; 
                     //PCSrc <= Branch & Zero;
                 end
                 default: begin
@@ -366,6 +370,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     RegWrite <= 0;  
                     JR <= 0;  
                     JAL <= 0;
+                    RegWrite_JAL <= 0;
                 end
                 
             endcase
@@ -381,6 +386,7 @@ module Controller(Instruction, RegDst, ALUOp, ALUSrc, Branch, MemRead, MemWrite,
                     JR <= 0;  
                     JAL <= 0;
                     size <= 0;
+                    RegWrite_JAL <= 0;
             end
         end
    // end
