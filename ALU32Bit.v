@@ -114,8 +114,10 @@ module ALU32Bit(ALUControl, A, B, ALUResult, Zero);
 			  	ALUResult <= 32'b0;
 			  	Zero <= 1'b1;
 			end
-		  	6'b000011: // JAL
+		  	6'b000011: begin // JAL
 			  	ALUResult <= 32'b0;
+			  	Zero <= 1'b1;
+			end
 			default: begin
 				ALUResult <= 32'b0;
 				Zero <= 1'b0;
