@@ -17,7 +17,7 @@ nop
 nop
 nop
 nop
-jal 6   // PC = 48
+jal 5   // PC = 48
 jal loop
 nop     // PC = 52
 nop     // PC = 56
@@ -26,13 +26,13 @@ nop     // PC = 64
 nop     // PC = 68
 loop: sw $t2, 0($t1)     // PC = 72
 nop     // PC = 76
-nop
-nop
-nop
-nop
-jr $ra
-nop
-nop
+nop     // PC = 80
+nop     // PC = 84
+nop     // PC = 88
+nop     // PC = 92
+jr $ra     // PC = 96
+nop     // PC = 76
+nop     // PC = 76
 nop
 nop
 nop
