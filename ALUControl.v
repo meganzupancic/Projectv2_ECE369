@@ -1,18 +1,20 @@
 `timescale 1ns / 1ps
 
-module ALUControl(ALUOp, funct, ALUControl);
+module ALUControl(ALUOp, funct, ALUControl, shift_select);
   input [5:0] ALUOp;
   input [5:0] funct;
   
   //wire funct = SE_Result[5:0];
 
   output reg [5:0] ALUControl;
+  output reg shift_select;
 
   always @(*) begin
     //case(ALUOp)
     //6'b000000: begin  // R-type instructions
     
     ALUControl = 6'b010101;  // default or value
+    shift_select = 0;
     
     if (ALUOp == 6'b000000) begin
         case (funct)
@@ -20,6 +22,7 @@ module ALUControl(ALUOp, funct, ALUControl);
               ALUControl = 6'b100000;
 	       6'b100010: // SUB
               ALUControl = 6'b100010;
+           //6'b011000: begin // MUL
 	       6'b011000: // MUL
               ALUControl = 6'b011000;
 	       6'b100100: // AND
@@ -30,10 +33,14 @@ module ALUControl(ALUOp, funct, ALUControl);
               ALUControl = 6'b100111;
 	       6'b100110: // XOR
               ALUControl = 6'b100110;
-	       6'b000000: // sll
+	       6'b000000: begin // sll
               ALUControl = 6'b000000;
-	       6'b000010: // srl
+              shift_select = 1;
+           end
+	       6'b000010: begin // srl
               ALUControl = 6'b111111; // manually changed to all 1s to differentiate from JR
+              shift_select = 1;
+           end
             6'b101010: // slt
 	      ALUControl = 6'b101010;
 	       6'b001000: // jr
@@ -43,6 +50,8 @@ module ALUControl(ALUOp, funct, ALUControl);
 	
 	else begin
 	    case (ALUOp)
+	       6'b011100:
+	           ALUControl = 6'b011000;
 
            6'b101011: // SW
               ALUControl = 6'b100000;
@@ -81,8 +90,10 @@ module ALUControl(ALUOp, funct, ALUControl);
 		      ALUControl = 6'b000010;
 	       6'b000011: // JAL
 		      ALUControl = 6'b000011;
-		   default:
+		   default: begin
 		      ALUControl = 6'b010101;
+		      shift_select = 0;
+		   end
 
     endcase
         
