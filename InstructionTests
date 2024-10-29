@@ -92,7 +92,10 @@ addi:
                           WANT $t1 (reg #9) = 11
                           PC = 288
 
-
+14. jump loop  ->  loop is at xor instruction, which is PC instruction address 264
+                   opcode = 000010
+                   address = 264
+                   WANT PC_pin = 264
 
 
 
