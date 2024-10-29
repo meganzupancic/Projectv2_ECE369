@@ -97,6 +97,15 @@ addi:
                    address = 264
                    WANT PC_pin = 264
 
+14. beq $t0, $t1, -7  -> rs = $t0 (reg #8) = 34
+                         rt = $t1 (reg #9) = 11
+                         imm = -7
+                         WANT no branch
+
+15. beq $t2, $t4, -14  -> rs = $t2 (reg #10) = 12
+                          rt = $t4 (reg #10) = 12
+                          imm = -14
+                          WANT to jump to 14 lines before (the xori instruction), instruction address 288
 
 
 
