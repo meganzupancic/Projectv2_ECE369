@@ -48,13 +48,14 @@
 // to allow for data multiplexing and setup time.
 ////////////////////////////////////////////////////////////////////////////////
 
-module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, ReadData1, ReadData2);
+module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, ReadData1, ReadData2, RegWrite_JAL);
 	//input[4:0] ReadRegister1, ReadRegister2;
 
 	input [31:0]Instruction;
 	input[4:0] WriteRegister;
 	input[31:0] WriteData;
 	input RegWrite;
+	input RegWrite_JAL;
 	//input [4:0] ReadRegister1;
 	//input [4:0] ReadRegister2;
 	input Clk_in;
@@ -75,7 +76,7 @@ module RegisterFile(Instruction, WriteRegister, WriteData, RegWrite, Clk_in, Rea
     end
     
     always @(posedge Clk_in) begin // posedge Clk
-		if (RegWrite == 1) begin 
+		if (RegWrite == 1 | RegWrite_JAL == 1) begin 
 	       		//RegisterFile[WriteRegister] <= WriteData;
 			RegisterFile[WriteRegister] <= WriteData;
 			$display ("WriteRegister = %d", WriteRegister);
