@@ -51,7 +51,8 @@ module DataMemory(Address, WriteData, Clk_in, MemWrite, MemRead, size, ReadData)
     initial begin
     
         //$readmemh("C:/Users/megzu/OneDrive - University of Arizona/ECE 369/Lab 4/MIPS tests/data_memory.mem", memory);
-        $readmemh("C:/Users/meganzupancic/Downloads/data_memory.mem", memory);
+        //$readmemh("C:/Users/meganzupancic/Downloads/data_memory.mem", memory); 
+        $readmemh("C:/Users/athiel/Downloads/data_memory.mem", memory);
     
     end
     
