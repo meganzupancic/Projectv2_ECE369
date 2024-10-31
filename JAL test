@@ -17,8 +17,7 @@ nop
 nop
 nop
 nop
-jal 5   // PC = 48
-jal loop
+jal loop  // PC = 48
 nop     // PC = 52
 nop     // PC = 56
 nop     // PC = 60
