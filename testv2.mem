@@ -1,28 +1,28 @@
 00004020	//	main:	add	$t0, $zero, $zero ->	main:	add	$t0, $zero, $zero
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
+00000000	//		nop ->		nop     
+00000000	//		nop ->		nop     // PC = 16
+00000000	//		nop ->		nop     // PC = 20
+20090004	//		addi	$t1, $zero, 4 ->		addi	$t1, $zero, 4  // PC = 24
+00000000	//		nop ->		nop     // PC = 28
+00000000	//		nop ->		nop
+00000000	//		nop ->		nop
+00000000	//		nop ->		nop     // PC = 40
+00000000	//		nop ->		nop     // PC = 44
+200afffc	//		addi	$t2, $zero, -4 ->		addi	$t2, $zero, -4   // PC = 48
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
-20090004	//		addi	$t1, $zero, 4 ->		addi	$t1, $zero, 4
+00000000	//		nop ->		nop     // PC = 64
+00000000	//		nop ->		nop     // PC = 68
+0541fffa	//		bgez	$t2, -6 ->		bgez	$t2, -6   // PC = 72
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
-200afffc	//		addi	$t2, $zero, -4 ->		addi	$t2, $zero, -4
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-0541fffa	//		bgez	$t2, -6 ->		bgez	$t2, -6
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-00000000	//		nop ->		nop
-0521fffa	//		bgez	$t1, -6 ->		bgez	$t1, -6
+0521fffa	//		bgez	$t1, -6 ->		bgez	$t1, -6  // 96
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
 00000000	//		nop ->		nop
